@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { Home } from "./Pages/Home";
+import { About } from "./Pages/About";
+import { Navbar } from "./Pages/Navbar";
+import { Order } from "./Pages/Order";
+import { Nopage } from "./Pages/Nopage";
+import { Product } from "./Pages/Product";
+import { New } from "./Pages/New";
+import { Featured } from "./Pages/Featured";
+import { Errorboundary } from "./Pages/Errorboundary";
+import { Users } from "./Pages/Users";
+// import { useFetch } from "./Pages/useFetch";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar></Navbar>
+      <Routes>
+        <Route path="/" element={<Home></Home>}></Route>
+
+        <Route path="about" element={<About></About>}></Route>
+
+        <Route path="order" element={<Order></Order>}></Route>
+
+        <Route path="*" element={<Nopage></Nopage>}></Route>
+
+        <Route path="product" element={<Product></Product>}>
+          <Route path="featured" element={<Featured></Featured>}></Route>
+
+          <Route path="new" element={<New></New>}></Route>
+        </Route>
+
+        <Route
+          path="errorboundary"
+          element={<Errorboundary></Errorboundary>}
+        ></Route>
+
+        <Route path="users" element={<Users></Users>}></Route>
+
+        {/* <Route path="userfetch" element={<useFetch></useFetch>}></Route> */}
+      </Routes>
+    </>
   );
 }
 
